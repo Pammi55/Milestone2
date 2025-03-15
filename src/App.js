@@ -1,24 +1,25 @@
-import logo from './logo.svg';
-import './App.css';
+//App.js
+import React from "react";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import Dashboard from "./Components/Dashboard";
+import FriendList from "./Components/FriendList";
+import ExpenseList from "./Components/ExpenseList";
+import ExpenseSummary from "./Components/ExpenseSummary";
+import { ExpenseService } from "./Services/ExpenseService";
+import { CalculationService } from "./Services/CalculatedServices";
+import { FriendService } from "./Services/FriendService";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <Routes>
+        {/* Define routes using the 'element' prop */}
+        <Route path="/" element={<Dashboard />} />
+        <Route path="/friends" element={<FriendList />} />
+        <Route path="/expenses" element={<ExpenseList />} />
+       {/* <Route path="/summary" element={<ExpenseSummary />} />*/}
+      </Routes>
+    </Router>
   );
 }
 
